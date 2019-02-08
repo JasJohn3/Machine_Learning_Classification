@@ -1,27 +1,28 @@
 from sklearn import tree
+import math
 
 
-#classification of Minivans vs sportscars
+#classification of Circles vs Squares
 #syntax for features
-#Features =Engine Horse power, Number of seats
-features = [[440,2],[500,2],[190,9],[150,8]]
+#Features =Has a radius, Has an Area
+features = [[1,1*math.pi],[1 ,2*math.pi],[3 ,3*math.pi],[0,1*1],[0,2*2],[0,3*3]]
 #Labeled Training Data
 #labels = ["Sports-Car","Sports-Car","Minivan","Minivan"]
-#0=Sportscar, 1=Minivan
-lables=[0,0,1,1]
+#0=Circle, 1=Square
+labels=[0,0,1,1]
 
 #create your classifier for the training data
 #sci-kit learn Documentation https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
 clf =tree.DecisionTreeClassifier()
 
 #Fit is finding patterns in the data
-clf=clf.fit(features,lables)
+clf=clf.fit(features,labels)
 
 #input unknown data
 #HP=160, Number of Seats =7
 #Prediction should be a minivan [0]
-print(clf.predict([[160,7]]))
+print(clf.predict([[1,4*math.pi]]))
 
 #HP=600, number of seats =2
 #Prediction should be a sports car [0]
-print(clf.predict([[600,2]]))
+print(clf.predict([[0,4*4]]))
